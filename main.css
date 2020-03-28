@@ -1,0 +1,74 @@
+@charset "UTF-8";
+/* CSS Document */
+
+*{
+	box-sizing: border-box;
+}
+
+@font-face{
+	font-family: header;
+	src: url("style/rocket_wildness/ROCKET WILDNESS.woff");
+}
+@font-face{
+	font-family: paragraph;
+	src: url("style/Kiona/fonts/Kiona-Regular.woff");
+}
+body{
+	background-image: url("images/pinkclouds.jpeg");
+	background-repeat: no-repeat;
+	background-size: cover;
+		
+}
+
+.container{
+	border: 2px solid black;
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	justify-content: center;
+	width: 40%;
+	margin: 10% auto 10% auto;
+	
+}
+
+h1{
+	font-family: header;
+	text-align: center;
+	font-size: 40px;
+	margin: 0;
+	padding: 0;
+}
+
+p{
+	font-family: paragraph;
+	text-align: center;
+}
+
+button{
+	font-family: paragraph;
+	font-size: 20px;
+	margin: 0 auto 10px auto;
+	border: 1px solid rgba(255,190,187,1.00);
+	background-color: transparent;
+}
+
+button:hover{
+	cursor: pointer;
+	color: white;
+	background-color: rgba(249,204,206,0.89);
+}
+
+.playContainer{
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+}
+
+legend, label{
+	font-family: paragraph;
+	text-align: center;
+}
+
+#js-quiz-form{
+	display: none;
+}
