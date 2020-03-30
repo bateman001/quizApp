@@ -31,7 +31,7 @@ const QA = [
 	},
 	
 	{question: "Who made their acting debut in the show Degrassi?",
-	 answer: ["J Cole", "Drake", "Kanye West", "Kid Cudi"],
+	 answer: ["Nicki Minaj", "Drake", "Kid Cudi", "Lizzo"],
 	 correct: 1
 	},
 	
@@ -42,19 +42,19 @@ const QA = [
 	},
 	
 	
-	{question: "Which artist from the group Odd Future, went on the produce their solo album Blond?",
-	 answer: ["Earl Sweatshirt", "Syd", "Frank Ocean", "Tyler, the Creator"],
-	 correct: 2
+	{question: "Which rapper wears a gladiator mask every time he performs?",
+	 answer: ["MF Doom", "G Eazy", "Logic", "Big Sean"],
+	 correct: 0
 	},
 	
 	
-	{question: "Which rapper avoided decades in prison by snitching on the New York gang, Nine Trey Grangsta Bloods?",
+	{question: "Which rapper avoided decades in prison by snitching on the New York gang, Nine Trey Gangsta Bloods?",
 	 answer: ["21 Savage", "Tekashi 69", "Lil Pump", "The Game"],
 	 correct: 1
 	},
 	
-	{question: "Which TDE artist released the 2016 hit album, CTRL?",
-	 answer: ["Isaiah Rashad", "Schoolboy Q", "SZA", "Kendrick Lamar"],
+	{question: "Which artist chose their moniker from a Wu-Tang Name generator?",
+	 answer: ["Schoolboy Q", "ASAP Mob", "Childish Gambino", "Brockhampton"],
 	 correct: 2
 	}
 ];
@@ -72,43 +72,43 @@ $(".js-play").on("click", e =>{
 	
 		$(".playContainer").hide();
 		
-		renderQuiz(currentQuestion);
+		renderQuiz(currentQuestion, points);
 	});
 
 
-function renderQuiz(i){
+function renderQuiz(i, p){
 	$("#js-next").hide();
 	
 	$(".js-answers").empty();
 	
 	if(i >= QA.length){
 		$("#js-quiz-form").hide();
-		$(".js-final-score").show();
-		finalScore(points);
+		$(".js-final-score").css("display", "block");
+		finalScore(p);
 		//show score
 		//ask if they want to play again
 		
 	}else{
 		
-		$(".js-questions").html(renderQuestion(i));
+		renderQuestion(i);
 		renderAnswers(i);
 		renderQuestionNum(i);
+		displayPicture(i);
 		console.log("QA:" + i);
-
-		$("#js-quiz-form").css("display", "block");
+		$("#js-quiz-form").css("display", "flex");
 	}
 	
 }
 
 function renderQuestionNum(i){
+	
 	$(".js-q-number").html(`<p>${i + 1}/${QA.length}</p>`)
 }
 
 function renderQuestion(index){
-	//renders question and answers
-	let question = `<legend> ${QA[index].question} <legend>`;
+	//renders question
+	$(".js-questions").html(`<legend> ${QA[index].question} <legend>`);	
 	
-	return question;
 }
 
 function renderAnswers(index){
@@ -129,23 +129,22 @@ $("#js-submit-answer").on("click", function(e){
 	e.preventDefault();
 		
 	let rightAns = QA[currentQuestion].correct;
-	console.log("This is the right ans " + rightAns);
+	console.log("This is the right ans: " + rightAns);
 	
 	let ans = $("input:checked").val();
-	console.log("input checked value " + ans);
+	console.log("input checked value: " + ans);
 	
 	if(ans == rightAns){
 		points++;
 		$(".js-response").html("CORRECT!")
-		//return true;
 	}else{
 		$(".js-response").html(`Wrong, the correct answer is ${QA[currentQuestion].answer[rightAns]}` );
-	//	return false;
 	}
 	
+	displayScore(points);
 	currentQuestion++;
-	console.log("Current Question" + currentQuestion);
-	console.log(points + "points");
+	console.log("Current Question: " + currentQuestion);
+	console.log(points + " points");
 	$("#js-next").show();
 	
 });
@@ -164,20 +163,29 @@ $("#js-next").on("click", function(e){
 	}
 });
 
+function displayScore(num){
+	
+	console.log("this number is: " + num);
+	
+	let currentScore = num * 10;
+	$(".current-score").html(`<p>${currentScore} / 100</p>`)
+}
+
 function finalScore(num){
 	
 	let score = num * 10;
 	
 	$(".js-final-score").html(`<h2>Your Final Score is</h2><br>
-	<h1>${score}</h1>`);
+	<h1>${score}/100</h1>`);
 	
 	$(".js-final-score").append(`<h3>Would you like to play again?</h3>`);
 	$(".playContainer").show();
 	
 }
 
-//function handleScore(){
-	//calculates score of the quiz by adding all the point together 
-
-
+function displayPicture(num){
+	let id = `#${String(num + 1)}`;
+	
+	$(".images").find(id).css("display", "inline");	
+}
 

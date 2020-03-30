@@ -14,21 +14,34 @@
 	src: url("style/Kiona/fonts/Kiona-Regular.woff");
 }
 body{
-	background-image: url("images/pinkclouds.jpeg");
-	background-repeat: no-repeat;
+	background-image: url("images/pinkheadphones.jpeg");
+	background-position: center;
 	background-size: cover;
-		
+	background-repeat: no-repeat;
+	background-color: rgba(221,153,154,1.00);
+	background-blend-mode:multiply;
+	background-attachment: fixed;
+	
 }
 
 .container{
-	border: 2px solid black;
-	display: flex;
-	flex-direction: column;
-	align-content: center;
-	justify-content: center;
-	width: 40%;
-	margin: 10% auto 10% auto;
-	
+	width: 60%;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: transparent;
+	background-image: none;
+}
+
+.title{
+	margin-top: 10%;
+	text-align: center;
+	font-size: 50px;
+	margin: 0;
+	padding: 0;
+}
+
+.title h1{
+	font-size: 70px;	
 }
 
 h1{
@@ -39,17 +52,38 @@ h1{
 	padding: 0;
 }
 
-p{
+h3, h2, p{
 	font-family: paragraph;
 	text-align: center;
 }
 
+
+.js-questions{
+	margin-bottom: 5%;
+	border: 2px solid rgba(221,153,154,0.51);
+	background-color: rgba(221,153,154,0.51);
+}
+
+.js-answers{
+	text-align: left;
+	width: 40%;
+}
+.js-response{
+	text-align: center;
+	font-family: paragraph;
+	font-size: 30px;
+	margin-top: 5%;
+}
+
+
 button{
 	font-family: paragraph;
 	font-size: 20px;
-	margin: 0 auto 10px auto;
 	border: 1px solid rgba(255,190,187,1.00);
-	background-color: transparent;
+	background-color: rgba(221,153,154,0.51);
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 5%;
 }
 
 button:hover{
@@ -62,6 +96,9 @@ button:hover{
 	margin: auto;
 	display: flex;
 	flex-direction: column;
+	width: 50%;
+	margin-top: 20%;
+	
 }
 
 legend, label{
@@ -69,6 +106,39 @@ legend, label{
 	text-align: center;
 }
 
+legend{
+	font-size: 30px;
+}
+
+label{
+	font-size: 20px;
+}
 #js-quiz-form{
 	display: none;
+	flex-direction: column;
+	alight-content: center;
+	margin-top: 10%;
+	
+}
+
+.js-final-score{
+	display: none;
+	width: 50%;
+	margin: 15% auto 0 auto;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-color: rgba(221,153,154,0.51);
+}
+
+img{
+	margin-left: auto;
+	width: 300px;
+	height: 300px;
+	postion: fixed;
+	filter: blur(10px);
+	
+}
+
+.blur{
+	filter: none;
 }
