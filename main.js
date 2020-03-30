@@ -93,7 +93,7 @@ function renderQuiz(i, p){
 		renderQuestion(i);
 		renderAnswers(i);
 		renderQuestionNum(i);
-		displayPicture(i);
+		//displayPicture(i);
 		console.log("QA:" + i);
 		$("#js-quiz-form").css("display", "flex");
 	}
@@ -116,8 +116,8 @@ function renderAnswers(index){
 	let ansArr = Object.values(QA[index].answer);
 	
 	$.each(ansArr, function(j, value){
-		$(".js-answers").append(`<input type="radio" name="answers${index}" value="${j}"> 
-		  <label for="${j}">${value}</label><br>`);
+		$(".js-answers").append(`<input type="radio" name="answers${index}" value="${j}" id="img${j}" class="radioInput"> 
+		  <label for="img${j}">${value}</label><br>`);
 	});
 	
 }
@@ -125,6 +125,9 @@ function renderAnswers(index){
 //submit answer listening
 $("#js-submit-answer").on("click", function(e){
 	
+	$('.radioInput').prop("disabled", true);
+
+
 	$("#js-submit-answer").hide();
 	e.preventDefault();
 		
@@ -156,7 +159,7 @@ $("#js-next").on("click", function(e){
 	
 	$("#js-next").hide();
 	
-	renderQuiz(currentQuestion);
+	renderQuiz(currentQuestion, points);
 	
 	if(currentQuestion <= QA.length){
 	$("#js-submit-answer").show();
