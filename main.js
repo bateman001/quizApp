@@ -75,7 +75,7 @@ let points, currentQuestion;
 
 
 //Play button starts entire quiz. Sets points and currentquestion to 0. When quiz restarts, variables are again reset to 0
-$(".js-play").on("submit", e =>{
+$(".js-play").on("click", e =>{
 	
 		points = 0;
 		currentQuestion = 0;
